@@ -1,0 +1,15 @@
+[
+{
+  "modid": "arachnophobia",
+  "name": "Arachnophobia",
+  "description": "Removes spiders.",
+  "version": "1.0",
+  "mcversion": "1.10.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Bread10"],
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
