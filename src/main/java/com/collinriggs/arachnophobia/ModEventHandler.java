@@ -1,11 +1,8 @@
-package com.collinriggs.arachnophobia.event;
+package com.collinriggs.arachnophobia;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.collinriggs.arachnophobia.Arachnophobia;
-
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCaveSpider;
@@ -18,13 +15,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ModEventHandler {
-	
-	private Block block;
 	
 	@SubscribeEvent
 	public void onLivingSpawn(EntityJoinWorldEvent event) {
@@ -40,17 +34,12 @@ public class ModEventHandler {
 	}
 	
 	@SubscribeEvent
-	public void onBlockBreak(BreakEvent event) {
-		block = event.getWorld().getBlockState(event.getPos()).getBlock();
-	}
-	
-	@SubscribeEvent
 	public void getBlockDrops(HarvestDropsEvent event) {
 		if (Arachnophobia.woolDropsString) {
 			if (event.getHarvester() instanceof EntityPlayer) {
 				EntityPlayer player = event.getHarvester();
 				ItemStack itemInHand = player.getHeldItemMainhand();
-				if ((itemInHand == null || itemInHand.getItem() != Items.SHEARS) && block == Blocks.WOOL) {
+				if ((itemInHand == null || itemInHand.getItem() != Items.SHEARS) && event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.WOOL) {
 					List<ItemStack> drops = event.getDrops();
 					drops.clear();
 					drops.add(new ItemStack(Items.STRING, 4));

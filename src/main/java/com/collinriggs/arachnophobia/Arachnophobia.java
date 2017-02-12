@@ -11,13 +11,11 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import com.collinriggs.arachnophobia.event.ModEventHandler;
-
-@Mod(modid = Ref.modid, name = Ref.modname, version = Ref.version)
+@Mod(modid = "arachnophobia", name = "Arachnophobia", version = "1.0")
 public class Arachnophobia {
 	
 	public static boolean addSeedsToGrass, woolDropsString, zombiesDropEyes,
-	cancelSpiders, cancelCaveSpiders, removeSpiderDungeons = true;
+	cancelSpiders, cancelCaveSpiders, removeSpiderDungeons;
 	
 	@Instance
 	public static Arachnophobia instance = new Arachnophobia();
